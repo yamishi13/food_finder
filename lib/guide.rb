@@ -9,11 +9,11 @@ class Guide
     # or create a new file
     elsif Restaurant.create_file
       puts "Created restaurant file."
+    # exit if create fails
     else
       puts "Exiting. \n\n"
       exit!
     end
-    # exit if create fails
   end
 
   def launch!
