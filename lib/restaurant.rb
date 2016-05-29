@@ -21,8 +21,41 @@ class Restaurant
   end
 
   def self.saved_restaurants
-    # read the restaurant file
-    # return instances of restaurant
+    restaurants = []
+    if file_usable?
+      file = File.new(@@filepath, 'r')
+      file.each_line do |line|
+        restaurants << Restaurant.new.import_line(line)
+      end
+      file.close
+    end
+    return restaurants
+  end
+
+  def self.build_using_questions
+    args = {}
+    print "Restaurant name: "
+    args[:name] = gets.chomp.strip
+
+    print "Cuisine Type: "
+    args[:cuisine] = gets.chomp.strip
+
+    print "Average price: "
+    args[:price] = gets.chomp.strip
+
+    return self.new(args)
+  end
+
+  def initialize(args={})
+    @name    = args[:name]    || ""
+    @cuisine = args[:cuisine] || ""
+    @price   = args[:price]   || ""
+  end
+
+  def import_line(line)
+    line_array = line.chomp.split("\t")
+    @name, @cuisine, @price = line_array
+    return self
   end
 
   def save
