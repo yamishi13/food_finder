@@ -4,14 +4,16 @@ class Guide
     # or create a new file
     # exit if create fails
   end
-  
+
   def launch!
+    introduction
     # introduction
     # action loop
     #   what do you want to do? (list, find, add, quit)
     #   do that action
     # repeat until user quits
     # conclusion
+    conclusion
   end
 
   def introduction
