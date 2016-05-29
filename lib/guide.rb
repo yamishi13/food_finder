@@ -1,7 +1,7 @@
 require 'restaurant'
 
 class Guide
-  def initialize path = nil
+  def initialize(path = nil)
     # locate the restaurant text file at path
     Restaurant.filepath = path
     if Restaurant.file_exists?
