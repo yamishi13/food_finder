@@ -15,6 +15,8 @@ class Restaurant
 
   def self.create_file
     # create the restaurant file
+    File.open @@filepath, 'w' unless file_usable?
+    return file_usable?
   end
 
   def self.saved_restaurants
